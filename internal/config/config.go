@@ -42,7 +42,7 @@ func Init() Config {
 		fmt.Printf("%s Enter auth token › ", aurora.Green("?"))
 		fmt.Scanln(&cfg.AuthToken)
 
-		configJson, err := json.Marshal(cfg)
+		configJson, err := json.MarshalIndent(cfg, "", "	")
 		if err != nil {
 			common.Fatal(err)
 		}
