@@ -3,6 +3,7 @@ package common
 import (
 	"fmt"
 	"os"
+	"regexp"
 	"strings"
 	"time"
 
@@ -51,4 +52,11 @@ func FileExists(path string) bool {
 		return false
 	}
 	return true
+}
+
+func Sanitize(s string) string {
+	s = strings.ReplaceAll(s, "<br>", "\n")
+	re := regexp.MustCompile(`<[^>]*>`)
+	s = re.ReplaceAllString(s, "")
+	return s
 }

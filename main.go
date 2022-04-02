@@ -105,7 +105,7 @@ page:
 choice:
 	var input string
 
-	fmt.Printf("%s %s › ", aurora.Green("?"), aurora.Bold(aurora.Cyan("Enter choice")))
+	fmt.Printf("%s %s » ", aurora.Green("?"), aurora.Bold("Enter choice"))
 	fmt.Scanln(&input)
 
 	switch input {
@@ -158,11 +158,9 @@ choice:
 		common.Fatal(err)
 	}
 
-	var desc string
-	if len(video.Details.Description) > 300 {
-		desc = fmt.Sprintf("%.400s...", video.Details.Description)
-	} else {
-		desc = video.Details.Description
+	desc := common.Sanitize(video.Details.Description)
+	if len(desc) > 400 {
+		desc = fmt.Sprintf("%.400s...", desc)
 	}
 	videoTime := time.UnixMilli(video.Uploaded)
 	d, err := time.ParseDuration(strconv.Itoa(video.Duration) + "s")
@@ -180,7 +178,7 @@ choice:
 	fmt.Printf("%s:\n-----\n%s\n-----\n", aurora.Bold(aurora.Magenta("Description")), desc)
 	fmt.Println(aurora.Bold(aurora.Green("[B] Go back\n[Q] Exit")))
 
-	fmt.Printf("%s %s › ", aurora.Green("?"), aurora.Bold(aurora.Cyan("Enter choice")))
+	fmt.Printf("%s %s » ", aurora.Green("?"), aurora.Bold("Enter choice"))
 	fmt.Scanln(&input)
 
 	switch input {
