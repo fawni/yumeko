@@ -14,9 +14,9 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/logrusorgru/aurora/v3"
 	"github.com/muesli/termenv"
-	"github.com/x6r/sip/internal/common"
-	"github.com/x6r/sip/internal/mpv"
-	"github.com/x6r/sip/internal/piped"
+	"github.com/x6r/yumeko/internal/common"
+	"github.com/x6r/yumeko/internal/mpv"
+	"github.com/x6r/yumeko/internal/piped"
 )
 
 const videoPerPage = 20
@@ -96,9 +96,9 @@ page:
 	if page == 0 {
 		keys = "[Q] Exit\n[N] Next page"
 	} else if end {
-		keys = "[Q] Exit\n[P] Previous page"
+		keys = "[Q] Exit\n[B] Previous page"
 	} else {
-		keys = "[Q] Exit\n[P] Previous page\n[N] Next page"
+		keys = "[Q] Exit\n[B] Previous page\n[N] Next page"
 	}
 	fmt.Println(aurora.Bold(aurora.Green(keys)))
 
@@ -119,7 +119,7 @@ choice:
 		page++
 		termenv.ClearScreen()
 		goto page
-	case "p", "P":
+	case "b", "B":
 		if page == 0 {
 			fmt.Println(aurora.Red("You are on the first page"))
 			goto choice

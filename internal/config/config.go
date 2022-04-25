@@ -8,7 +8,7 @@ import (
 
 	"github.com/adrg/xdg"
 	"github.com/logrusorgru/aurora/v3"
-	"github.com/x6r/sip/internal/common"
+	"github.com/x6r/yumeko/internal/common"
 )
 
 type Config struct {
@@ -17,14 +17,14 @@ type Config struct {
 }
 
 var (
-	PathSip    = filepath.Join(xdg.ConfigHome, "sip")
-	PathConfig = filepath.Join(PathSip, "config.json")
+	PathYumeko = filepath.Join(xdg.ConfigHome, ".yumeko")
+	PathConfig = filepath.Join(PathYumeko, "config.json")
 )
 
 func Init() Config {
 	var cfg Config
 
-	if err := os.MkdirAll(PathSip, 0755); err != nil {
+	if err := os.MkdirAll(PathYumeko, 0755); err != nil {
 		common.Fatal(err)
 	}
 

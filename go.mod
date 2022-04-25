@@ -1,4 +1,4 @@
-module github.com/x6r/sip
+module github.com/x6r/yumeko
 
 go 1.16
 

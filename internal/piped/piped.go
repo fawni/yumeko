@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/x6r/sip/internal/config"
+	"github.com/x6r/yumeko/internal/config"
 )
 
 func GetInstanceFromConfig() (string, string) {
