@@ -36,8 +36,6 @@ func main() {
 	searchURL := baseURL + "/search?q="
 	streamURL := baseURL + "/streams/"
 
-	termenv.ClearScreen()
-
 	var (
 		body []byte
 		err  error
